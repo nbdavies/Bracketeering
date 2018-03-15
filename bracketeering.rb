@@ -1,4 +1,5 @@
 def probability_by_delta_seat(delta)
+  # Upset odds based on historical precedent (with some smoothing applied)
   # Equal seats should return 50-50 probability
   # Maximum spread (15) should return "close to" absolute 100-0 odds
   case delta
@@ -44,6 +45,7 @@ def winner_by_seat?(seat_1, seat_2)
   ([*1..100].sample >= probability_by_delta_seat(delta) * 100) ? seat_1 : seat_2
 end
 
+# This is a less useful predictor: low-ranking teams often have high win ratios
 def probability_by_win_ratio(delta)
   # A team wins between 0% and 100% of its games
   # Comparing two teams, the difference in percentages will also be between 0% and 100%
